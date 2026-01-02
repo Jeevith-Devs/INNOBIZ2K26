@@ -11,6 +11,8 @@ export interface Event {
   image: string;
   rules: string[];
   teamSize: string;
+  // Optional Google Form link for registration
+  formLink?: string;
   prizes: {
     first: string;
     second: string;

@@ -17,6 +17,8 @@ const EVENTS: Event[] = [
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
     rules: ['Individual participation', 'Languages: C++, Java, Python', 'Time limit: 2 hours', 'Plagiarism checks enabled'],
     teamSize: '2-3',
+    // Google Form link for Code Arena
+    formLink: 'https://forms.gle/oFV8sW52Yud3XDX36',
     prizes: {
       first: '₹3000',
       second: '₹2000',
@@ -28,9 +30,11 @@ const EVENTS: Event[] = [
     name: 'Clone It',
     category: 'Technical',
     description: 'Replicate a given UI design with pixel-perfect accuracy using modern frontend technologies.',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519222970733-f546218fa6d7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     rules: ['Team of 2 max', 'Frameworks allowed: React, Vue, HTML/CSS', 'Responsive design required', 'Submission via GitHub'],
     teamSize: '2-3',
+    // Google Form link for Clone It
+    formLink: 'https://forms.gle/E984DKzW3itJTVdp6',
     prizes: {
       first: '₹3000',
       second: '₹2000',
@@ -42,9 +46,11 @@ const EVENTS: Event[] = [
     name: 'Brain Wave',
     category: 'Non-Technical',
     description: 'A test of wits, logic, and general knowledge. From business trivia to lateral thinking puzzles.',
-    image: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     rules: ['Team of 2', '3 Rounds: Quiz, Connection, Rapid Fire', 'No electronic gadgets', 'Decision of judges is final'],
     teamSize: '2',
+    // Google Form link for Brain Wave
+    formLink: 'https://forms.gle/zqj7izv3XAQgtUgHA',
     prizes: {
       first: '₹2000',
       second: '₹1000',
@@ -56,9 +62,11 @@ const EVENTS: Event[] = [
     name: 'Reel Riddle',
     category: 'Non-Technical',
     description: 'Decide the movie or tech concept from a series of reels and visual cues.',
-    image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1602492665157-639323eadd31?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     rules: ['Team of 2-3', 'Visual rounds only', 'Buzzer round included', 'Tie-breaker if needed'],
     teamSize: '2',
+    // Google Form link for Reel Riddle
+    formLink: 'https://forms.gle/GF3Hy7VsxWEaKgue9',
     prizes: {
       first: '₹2000',
       second: '₹1000',
@@ -108,8 +116,16 @@ const Events: React.FC = () => {
               <div className="p-6">
                 <h3 className="font-heading text-xl font-bold mb-2">{event.name}</h3>
                 <p className="text-gray-500 text-sm line-clamp-2 mb-4">{event.description}</p>
-                <div className="flex items-center text-sm font-semibold text-orange-600">
-                  View Details &rarr;
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center text-sm font-semibold text-orange-600">
+                    View Details &rarr;
+                  </div>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); window.open(event.formLink || 'https://forms.gle', '_blank'); }}
+                    className="w-full bg-gradient-to-r from-orange-600 to-yellow-500 text-white py-2 rounded-lg font-bold uppercase tracking-widest hover:shadow-lg hover:shadow-orange-500/20 transition-all"
+                  >
+                    Register
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -213,7 +229,7 @@ const Events: React.FC = () => {
                   </div>
 
                   <button 
-                    onClick={() => window.open('https://forms.google.com', '_blank')}
+                    onClick={() => selectedEvent?.formLink && window.open(selectedEvent.formLink, '_blank')}
                     className="w-full bg-gradient-to-r from-orange-600 to-yellow-500 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:shadow-lg hover:shadow-orange-500/30 transition-all transform hover:scale-[1.02]"
                   >
                     Register For {selectedEvent.name}
